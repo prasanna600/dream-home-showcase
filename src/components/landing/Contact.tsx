@@ -30,10 +30,6 @@ function validate(v: Fields): Errors {
   return e;
 }
 
-// Web3Forms public access key (safe to expose client-side).
-// Get a free key at https://web3forms.com by entering prasanna00510@gmail.com.
-const WEB3FORMS_ACCESS_KEY = "02866d8a-1fec-4c26-b703-352e75ad3454";
-
 const fieldClass =
   "w-full border border-navy/25 bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-gold focus:ring-2 focus:ring-gold/40";
 
@@ -56,28 +52,29 @@ export function Contact() {
     setSending(true);
     setSendError(null);
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("https://formsubmit.co/ajax/rprasanna2335@gmail.com", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          subject: "New quote request — Smart Home Builders & Solutions",
-          from_name: "Smart Home Builders Website",
+          _subject: "New quote request — Smart Home Builders & Solutions",
           name: values.name.trim(),
           phone: values.phone.trim(),
           email: values.email.trim(),
           message: values.details.trim(),
         }),
       });
-      const json = (await res.json()) as { success?: boolean; message?: string };
-      if (!res.ok || !json.success) {
+      const json = (await res.json()) as { success?: boolean | string; message?: string };
+      
+      // FormSubmit returns success as boolean or string "true"
+      const isSuccess = json.success === true || json.success === "true";
+      if (!res.ok || !isSuccess) {
         throw new Error(json.message || "Submission failed");
       }
       setSubmitted(true);
       setValues(empty);
     } catch {
       setSendError(
-        "We couldn't send your request right now. Please call 096006 08080 or email askuthiravan@gmail.com.",
+        "We couldn't send your request right now. Please call 096006 08080 or email rprasanna2335@gmail.com.",
       );
     } finally {
       setSending(false);
@@ -112,7 +109,7 @@ export function Contact() {
                   contact you within 24 hours to discuss your project.
                 </p>
                 <button
-                  type="button"                                                                                                                                                                                        
+                  type="button"
                   onClick={() => setSubmitted(false)}
                   className="mt-8 border-2 border-navy px-6 py-3 font-display text-xs font-bold uppercase tracking-widest text-navy transition-colors hover:border-gold hover:bg-gold"
                 >
@@ -236,7 +233,7 @@ export function Contact() {
 
           <div id="contact" className="reveal flex flex-col gap-6">
             <div className="bg-navy p-7 text-white sm:p-9">
-              <h3  className="font-display text-lg font-bold uppercase tracking-wide">
+              <h3 className="font-display text-lg font-bold uppercase tracking-wide">
                 Contact Information
               </h3>
               <ul className="mt-7 space-y-6 text-sm">
@@ -264,7 +261,7 @@ export function Contact() {
                   <div className="min-w-0">
                     <p className="font-semibold">Email</p>
                     <a
-                      href="mailto:askuthiravan@gmail.com"
+                      href="mailto:rprasanna2335@gmail.com"
                       className="mt-1 block break-all text-white/70 hover:text-gold"
                     >
                       askuthiravan@gmail.com
