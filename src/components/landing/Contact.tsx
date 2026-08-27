@@ -52,7 +52,7 @@ export function Contact() {
     setSending(true);
     setSendError(null);
     try {
-      const res = await fetch("https://formsubmit.co/ajax/rprasanna2335@gmail.com", {
+      const res = await fetch("https://formsubmit.co/ajax/prasannaram005@gmail.com", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
