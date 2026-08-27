@@ -52,7 +52,7 @@ export function Contact() {
     setSending(true);
     setSendError(null);
     try {
-      const res = await fetch("https://formsubmit.co/ajax/prasannaram005@gmail.com", {
+      const res = await fetch("https://formsubmit.co/ajax/prasanna00510@gmail.com", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
@@ -74,7 +74,7 @@ export function Contact() {
       setValues(empty);
     } catch {
       setSendError(
-        "We couldn't send your request right now. Please call 096006 08080 or email prasannaram005@gmail.com",
+        "We couldn't send your request right now. Please call 096006 08080 or email prasanna00510@gmail.com",
       );
     } finally {
       setSending(false);
