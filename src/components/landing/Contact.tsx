@@ -74,7 +74,7 @@ export function Contact() {
       setValues(empty);
     } catch {
       setSendError(
-        "We couldn't send your request right now. Please call 096006 08080 or email rprasanna2335@gmail.com.",
+        "We couldn't send your request right now. Please call 096006 08080 or email prasannaram005@gmail.com",
       );
     } finally {
       setSending(false);
